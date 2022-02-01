@@ -1,0 +1,12 @@
+.gitignore
+.idea
+manage.py
+Procfile
+Procfile.windows
+ProjectMeerkat
+RankAPIDevRvB
+RankAPIDevRvB.txt
+RankCalc
+requirements.txt
+runtime.txt
+staticfiles
