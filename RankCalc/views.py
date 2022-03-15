@@ -128,47 +128,23 @@ class RankResults(generics.ListAPIView):
             # Step 3 - Calculate scores for all plans, benefits and categories
             sumScores = np.transpose(np.ones(catScores.shape[0] - 1, dtype=int)) @ catScores[1:catScores.shape[0], :]
 
-            ### ORINGAL CODE ###
-
-            # if max(sumScores) != 0:
-            #     totalScores = 10 * sumScores / max(sumScores)
-            # else:
-            #     totalScores = 0 * sumScores
-            #
-            # if max(detailedPlanScores[outputBen - 1, :]) != 0:
-            #     benefitScores  = 10 * detailedPlanScores[outputBen - 1, :] / max(detailedPlanScores[outputBen - 1, :])
-            # else:
-            #     benefitScores  = 0 * detailedPlanScores[outputBen - 1, :]
-            #
-            # if max(catScores[outputCat, :]) != 0:
-            #     categoryScores = 10 * catScores[outputCat, :] / max(catScores[outputCat, :])
-            # else:
-            #     categoryScores = 0 * catScores[outputCat, :]
-            #
-            # if max(catScores[1, :]) != 0:
-            #     excessCoverScores = 10 * catScores[1, :] / max(catScores[1, :])
-            # else:
-            #     excessCoverScores = 0 * catScores[1, :]
-
-            ### CORMAC TEST UPDATES ###
-
             if max(sumScores) != 0:
-                totalScores = 100 * sumScores / max(sumScores)
+                totalScores = 10 * sumScores / max(sumScores)
             else:
                 totalScores = 0 * sumScores
 
             if max(detailedPlanScores[outputBen - 1, :]) != 0:
-                benefitScores  = 100 * detailedPlanScores[outputBen - 1, :] / max(detailedPlanScores[outputBen - 1, :])
+                benefitScores  = 10 * detailedPlanScores[outputBen - 1, :] / max(detailedPlanScores[outputBen - 1, :])
             else:
                 benefitScores  = 0 * detailedPlanScores[outputBen - 1, :]
 
             if max(catScores[outputCat, :]) != 0:
-                categoryScores = 100 * catScores[outputCat, :] / max(catScores[outputCat, :])
+                categoryScores = 10 * catScores[outputCat, :] / max(catScores[outputCat, :])
             else:
                 categoryScores = 0 * catScores[outputCat, :]
 
             if max(catScores[1, :]) != 0:
-                excessCoverScores = 100 * catScores[1, :] / max(catScores[1, :])
+                excessCoverScores = 10 * catScores[1, :] / max(catScores[1, :])
             else:
                 excessCoverScores = 0 * catScores[1, :]
 
